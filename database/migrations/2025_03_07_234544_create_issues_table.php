@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('projects', function (Blueprint $table) {
+        Schema::create('issues', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('slug')->unique();
-            $table->string('name');
+            $table->foreignId('project_id')->constrained()->cascadeOnDelete();
+            $table->string('title');
             $table->text('description')->nullable();
-            $table->text('link')->nullable();
-            $table->string('status'); // pending, accepted, rejected
-            $table->text('password_hash')->nullable();
+            $table->string('status'); // open, in_progress, resolved, closed
+            $table->string('priority'); // low, medium, high
+            $table->string('type'); // bug, feature, task
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('projects');
+        Schema::dropIfExists('issues');
     }
 };

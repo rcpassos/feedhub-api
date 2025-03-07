@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Project extends Model
+class Issue extends Model
 {
-    /** @use HasFactory<\Database\Factories\ProjectFactory> */
+    /** @use HasFactory<\Database\Factories\IssueFactory> */
     use HasFactory;
 
     /**
@@ -17,18 +17,18 @@ class Project extends Model
      * @var list<string>
      */
     protected $fillable = [
-        'user_id',
-        'slug',
-        'name',
+        'project_id',
+        'title',
         'description',
-        'link',
+        'description',
         'status',
-        'password_hash',
+        'priority',
+        'type',
     ];
 
-    /** @return BelongsTo<User, $this> */
-    public function user(): BelongsTo
+    /** @return BelongsTo<Project, $this> */
+    public function project(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Project::class);
     }
 }
