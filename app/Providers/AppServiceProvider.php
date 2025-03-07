@@ -43,7 +43,7 @@ class AppServiceProvider extends ServiceProvider
         Date::use(CarbonImmutable::class);
     }
 
-    private function configureModels()
+    private function configureModels(): void
     {
         // throw an exception if access to a property that does not exist
         Model::shouldBeStrict();
