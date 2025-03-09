@@ -17,13 +17,9 @@ class ValidateApiToken
     {
         $requestKey = $request->headers->get('x-api-key');
 
-        if (! $requestKey) {
-            return response()->json([], 403);
-        }
-
         $localKey = config('api.key');
 
-        if (! $localKey || $requestKey !== $localKey) {
+        if ($requestKey === null || $localKey === null || $requestKey !== $localKey) {
             return response()->json([], 403);
         }
 
