@@ -18,12 +18,11 @@ class Project extends Model
      */
     protected $fillable = [
         'user_id',
-        'slug',
         'name',
         'description',
         'link',
         'status',
-        'password_hash',
+        'share_hash',
     ];
 
     /** @return BelongsTo<User, $this> */
