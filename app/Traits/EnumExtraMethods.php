@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Enums;
+namespace App\Traits;
 
-trait ExtraMethods
+trait EnumExtraMethods
 {
     /**
      * Returns only the values of each option from the enum.

@@ -2,9 +2,11 @@
 
 namespace App\Enums;
 
+use App\Traits\EnumExtraMethods;
+
 enum ProjectStatus: string
 {
-    use ExtraMethods;
+    use EnumExtraMethods;
 
     case PENDING = 'pending';
     case ACCEPTED = 'accepted';
