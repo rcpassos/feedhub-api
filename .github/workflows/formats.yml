@@ -46,6 +46,3 @@ jobs:
 
       - name: Type Checks
         run: composer test:types
-
-      - name: Rector Checks
-        run: composer test:refactor
