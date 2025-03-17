@@ -18,20 +18,20 @@ class AuthController extends Controller
     {
         $user = User::create($request->validated());
 
-        $token = $user->createToken($request->email);
+        $token = $user->createToken($user->email);
 
         return new UserAuthResource($user, $token);
     }
 
     public function login(LoginRequest $request): UserAuthResource
     {
-        $user = User::where('email', $request->email)->first();
+        $user = User::where('email', $request->validated('email'))->first();
 
-        if (! $user || ! Hash::check($request->password, $user->password)) {
+        if (! $user || ! Hash::check($request->validated('password'), $user->password)) {
             abort(401, 'Invalid credentials');
         }
 
-        $token = $user->createToken($request->email);
+        $token = $user->createToken($user->email);
 
         return new UserAuthResource($user, $token);
     }
