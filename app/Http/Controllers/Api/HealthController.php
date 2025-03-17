@@ -8,7 +8,10 @@ use Illuminate\Http\JsonResponse;
 
 class HealthController extends Controller
 {
-    public function __construct(protected HealthService $healthService) {}
+    public function __construct(protected HealthService $healthService)
+    {
+        //
+    }
 
     public function __invoke(): JsonResponse
     {
