@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\HealthController;
 use App\Http\Controllers\Api\ProjectController;
 use App\Http\Middleware\ValidateApiToken;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(ValidateApiToken::class)->group(function () {
+
+    Route::get('health', HealthController::class);
 
     Route::prefix('auth')->group(function () {
         Route::post('register', [AuthController::class, 'register']);
