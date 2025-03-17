@@ -60,12 +60,14 @@
         "lint": "pint",
         "refactor": "rector",
         "test:lint": "pint --test",
-        "test:types": "phpstan",
+        "test:types": "phpstan analyse --ansi",
         "test:refactor": "rector --dry-run",
+        "test:unit": "pest --colors=always",
         "test": [
+            "@test:refactor",
             "@test:lint",
             "@test:types",
-            "@test:refactor"
+            "@test:unit"
         ]
     },
     "extra": {
